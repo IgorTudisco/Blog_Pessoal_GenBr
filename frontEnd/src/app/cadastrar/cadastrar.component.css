@@ -1,0 +1,12 @@
+#img-bg {
+  background-image: url(../../assets/img/naruto4.jpg);
+  min-height: 937px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.temporizador:hover {
+  color: rgb(141, 201, 250);
+  transition-duration: 1s;
+}
