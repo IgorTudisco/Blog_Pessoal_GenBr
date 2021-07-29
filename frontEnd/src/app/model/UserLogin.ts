@@ -8,7 +8,7 @@ export class UserLogin {
 
 	public senha: string
 
-  public toke: string
+  public token: string
 
 	public foto: string
 
