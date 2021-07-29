@@ -35,14 +35,21 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
-			<scope>runtime</scope> </dependency> -->
+		<!-- comentar o MySql quando for mandar para o heroku -->
 
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- comentar o PostgreSql quando for mandar para uso local -->
+
+		<!-- <dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.2.12</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>io.springfox</groupId>

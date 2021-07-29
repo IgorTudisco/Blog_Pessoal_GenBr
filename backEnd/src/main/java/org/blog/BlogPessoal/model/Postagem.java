@@ -44,6 +44,13 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Theme theme;
 
+	/**
+	 * Mostra a minha lista de usuários por pastagem.
+	 */
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuarioPostagem;
+
 	public Postagem() {
 		super();
 	}
@@ -91,6 +98,14 @@ public class Postagem {
 
 	public void setTheme(Theme theme) {
 		this.theme = theme;
+	}
+
+	public Usuario getUsuarioPostagem() {
+		return usuarioPostagem;
+	}
+
+	public void setUsuarioPostagem(Usuario usuarioPostagem) {
+		this.usuarioPostagem = usuarioPostagem;
 	}
 
 }
