@@ -26,7 +26,8 @@
       <div class="row d-flex justify-content-center mt-3 mb-5">
         <div class="col-md-6 text-white">
 
-          <button class="btn btn-light m-sm-5">Nova postagem</button>
+          <button class="btn btn-light m-sm-5" data-bs-toggle="modal" data-bs-target="#novaPostagem">Nova
+            postagem</button>
 
           <!-- Passando o id de href das minhas postagens -->
 
@@ -49,13 +50,14 @@
 <!--/Conteudo principal-->
 
 <!--Nav para ver as postagens-->
+
 <!-- Crinado um id para o container para ser usado como href-->
 <div class="container mb-5 mt-5" id="postagens">
   <nav>
     <!--Alinhando as divs-->
     <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
 
-      <button class="nav-link active text-secondary fontText" id="nav-todasAsPostagens-tab" data-bs-toggle="tab"
+      <button class="nav-link active text-secondary fontText my-2" id="nav-todasAsPostagens-tab" data-bs-toggle="tab"
         data-bs-target="#nav-todasAsPostagens" type="button" role="tab" aria-controls="nav-todasAsPostagens"
         aria-selected="true">Todas as
         postagens</button>
@@ -108,3 +110,47 @@
   </div>
 </div>
 <!--/Nav para ver as postagens-->
+
+<!--Modal-->
+<div class="modal fade " id="novaPostagem" tabindex="-1" aria-labelledby="tituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nova Postagem</h5>
+        <button type="button" class="btn-close my-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!--Corpo do modal-->
+      <div class="modal-body">
+
+        <div class="form-group my-2">
+          <label class="mb-1" for="titulo">Titulo</label>
+          <input type="text" class="form-control" id="titulo" placeholder="Digite o Titulo aqui">
+        </div>
+
+        <div class="form-group my-2">
+          <label class="mb-1" for="texto">Texto</label>
+          <textarea class="form-control" name="texto" id="texto" rows="3"></textarea>
+        </div>
+
+        <div class="form-group my-2">
+          <label class="mb-1" for="tema">Escolha um Tema ou <a data-bs-dismiss="modal" routerLink=''>cadastre um
+              novo:</a></label>
+          <select name="tema" id="tema" class="form-control">
+            <option value="">Temas</option>
+          </select>
+
+
+        </div>
+
+      </div>
+      <!--/Corpo do modal-->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger my-2" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success my-2">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Modal-->
