@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*
+  Passando de forma global a conf do scroll para o mesmo vir de forma suave
+*/
+
+html {
+  scroll-behavior: smooth;
+}

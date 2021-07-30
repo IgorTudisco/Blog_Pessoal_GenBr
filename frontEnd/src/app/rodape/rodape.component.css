@@ -13,20 +13,25 @@ ul.socialNetwork li {
 .fa {
   font-size: 35pt;
   color: white;
+  transition-duration: 1.5s;
 }
 
 .fa-facebook-official:hover {
   color: #3b5998;
+  transition-duration: 1.5s;
 }
 
 .fa-instagram:hover {
   color: #c13584;
+  transition-duration: 1.5s;
 }
 
 .fa-github:hover {
   color: black;
+  transition-duration: 1.5s;
 }
 
 .fa-linkedin-square:hover {
   color: #0072b1;
+  transition-duration: 1.5s;
 }

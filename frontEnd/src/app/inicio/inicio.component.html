@@ -1,1 +1,110 @@
-<p>inicio works!</p>
+<!--Conteudo principal-->
+<div class="container-fluid">
+
+  <!--
+    Para dividir a tela em 12 cols temos que usar a class row
+  -->
+
+  <div class="row  bg-secondary d-flex align-items-center">
+
+    <div class="col-md-6">
+
+      <!--
+      Subdivisão da minha cow em mais 12 cols.
+      Passando um d-flex para ajustar as cols em linha.
+    -->
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 text-white">
+
+          <h1 class="fs-54">Seja bem vindo(a)!</h1>
+          <h5 class="fs-18">Deixei aqui a sua opnião e pensamentos..!</h5>
+
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center mt-3 mb-5">
+        <div class="col-md-6 text-white">
+
+          <button class="btn btn-light m-sm-5">Nova postagem</button>
+
+          <!-- Passando o id de href das minhas postagens -->
+
+          <a class="btn btn-outline-light" href="#postagens">Ver postagens</a>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col-6 d-flex justify-content-center">
+
+      <img src="../../assets/img/Sent Message-bro.png" alt="Mandando mensagem" width="500px" height="500px">
+
+    </div>
+  </div>
+
+</div>
+<!--/Conteudo principal-->
+
+<!--Nav para ver as postagens-->
+<!-- Crinado um id para o container para ser usado como href-->
+<div class="container mb-5 mt-5" id="postagens">
+  <nav>
+    <!--Alinhando as divs-->
+    <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+
+      <button class="nav-link active text-secondary fontText" id="nav-todasAsPostagens-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-todasAsPostagens" type="button" role="tab" aria-controls="nav-todasAsPostagens"
+        aria-selected="true">Todas as
+        postagens</button>
+
+      <button class="nav-link text-secondary fontText" id="nav-minhasPostagens-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-minhasPostagens" type="button" role="tab" aria-controls="nav-minhasPostagens"
+        aria-selected="false">Minhas
+        Postagem</button>
+
+      <button class="nav-link text-secondary fontText" id="nav-postagemPorTema-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-postagemPorTema" type="button" role="tab" aria-controls="nav-postagemPorTema"
+        aria-selected="false">Postagem por tema</button>
+
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-todasAsPostagens" role="tabpanel"
+      aria-labelledby="nav-todasAsPostagens-tab">Todas As Postagens</div>
+
+    <div class="tab-pane fade" id="nav-minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">Minhas
+      postagens.
+
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
+      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
+      aspernatur porro.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
+      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
+      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
+      aspernatur porro.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
+      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
+      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
+      aspernatur porro.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
+      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
+      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
+      aspernatur porro.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
+      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
+
+    </div>
+
+    <div class="tab-pane fade" id="nav-postagemPorTema" role="tabpanel" aria-labelledby="nav-postagemPorTema-tab">
+      Postagem por tema
+    </div>
+
+  </div>
+</div>
+<!--/Nav para ver as postagens-->

@@ -8,11 +8,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
         <li class="nav-item active">
-          <img src="../../assets/img/naruto-rikudou.jpg" alt="foto perfil do usuario" width="50px" height="50px"
-            class=" rounded-circle">
+          <!--
+            Passando a minha foto que está dentro dá minha variável
+            de ambiente para dentro dentro no meu img.
+            Para isso vamos usar o conseito de {{interpolação}}.
+          -->
+          <img src="{{foto}}" alt="foto perfil do usuario" width="50px" height="50px" class=" rounded-circle">
         </li>
         <li class="nav-item p-lg-3">
-          <p class="m-0 fw-bold text-white fs-16"> Nome do usuário </p>
+          <!--
+            Interpolando o nome e passando ele para a minha tag p
+          -->
+          <p class="m-0 fw-bold text-white fs-16"> Olá, {{nome}} </p>
         </li>
 
         <li class="nav-item">
@@ -24,7 +31,7 @@
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0 d-flex align-items-center">
 
         <li class="nav-item p-lg-3">
-          <button type="button" class="btn btn-secondary">
+          <button (click)='sair()' type="button" class="btn btn-secondary">
             <p class="m-0 fw-bold text-white fs-16 "> SAIR <i class="fa fa-sign-out p-lg-1" aria-hidden="true"></i> </p>
           </button>
         </li>

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common'; // class e provide
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -27,7 +28,15 @@ import { InicioComponent } from './inicio/inicio.component';
     HttpClientModule, // Usado para habilitar o http dos end points.
     FormsModule // Usado para habilitar a entrada de dados pelo forms.
   ],
-  providers: [],
+  providers: [{
+    /*
+      Para ajudar o Angular a não se perder nas rotas e
+      para ajudar o mesmo a referenciar a propria pg temos
+      que usar esse provider e essa class do common.  
+    */
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

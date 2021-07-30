@@ -1,1 +1,10 @@
+<!--
+  Passando o método ngIf para verificar a minha função boolean do service.
+  Caso seja true, ele irá colocar os componentes na minha pg.
+-->
+
+<app-menu *ngIf="auth.login()"></app-menu>
+
 <router-outlet></router-outlet>
+
+<app-rodape *ngIf="auth.login()"></app-rodape>

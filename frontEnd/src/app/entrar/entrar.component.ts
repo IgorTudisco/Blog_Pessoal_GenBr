@@ -41,17 +41,14 @@ export class EntrarComponent implements OnInit {
       Teste com o console.log() para ver se o environment recebeu o dado correto.
 
       ex 
-      console.log(environment.token)
-      console.log(environment.nome)
-
-      */ 
-     
-      console.log(environment.token)
+            console.log(environment.token)
       console.log(environment.nome)
       console.log(environment.foto)
       console.log(environment.id)
       console.log(environment.emil)
-      
+
+      */
+     
       this.router.navigate(['/inicio'])
 
     }, error =>{
