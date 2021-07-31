@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { TemaComponent } from './tema/tema.component';
 
 // comocando as rotas dentro do array, funciona como um json.
 // passa o path e o componente.
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'inicio',
     component: InicioComponent
+  },
+  {
+    path: 'tema',
+    component: TemaComponent
   }
 
 ];
