@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Theme } from '../model/Theme';
 import { Usuario } from '../model/Usuario';
+import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -31,7 +32,8 @@ export class InicioComponent implements OnInit {
 
     private router: Router,
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private authService: AuthService
 
   ) { }
 
@@ -46,6 +48,8 @@ export class InicioComponent implements OnInit {
     }
 
     this.getAllTema()
+    this.findAllPostagem()
+    this.findByIdUser()
 
   }
 
@@ -79,6 +83,16 @@ export class InicioComponent implements OnInit {
 
   }
 
+  findByIdUser() {
+
+    this.authService.getByIdUsuruario(this.idUser).subscribe((resp: Usuario) => {
+
+      this.user = resp
+
+    })
+
+  }
+
   publicar() {
 
     // Preenchendo os campos que não são passados pelo usuário
@@ -106,6 +120,8 @@ export class InicioComponent implements OnInit {
       alert('Postagem realizada com sucesso!')
 
       this.postagem = new Postagem()
+
+      this.findAllPostagem()
 
     })
 

@@ -19,14 +19,14 @@ export class TemaService {
 
   token = {
 
-    headers: new HttpHeaders().set('Authorization',environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token)
 
   }
 
   // Criando os métodos com o mesmo nome dos meus end point.
   // Esse método retorna um array, por isso os []
 
-  getAllTema(): Observable<Theme[]>{
+  getAllTema(): Observable<Theme[]> {
 
     // Passando o header na minha requisição e retornando a minha lista.
 
@@ -36,40 +36,40 @@ export class TemaService {
 
   // Metodo que pega por id
 
-  getById(id: number): Observable<Theme>{
+  getById(id: number): Observable<Theme> {
 
-   // console.log(JSON.stringify(id))
-   // console.log(environment.token)
-    return this.http.get<Theme>(`http://localhost:8080/theme/${id}`, this.token)
+    // console.log(JSON.stringify(id))
+    // console.log(environment.token)
+    return this.http.get<Theme>(`http://localhost:8080/theme/${id}`)
 
   }
 
   // Esse método recebe um objeto de Theme para salvar no db.
 
-  postTema(theme: Theme): Observable<Theme>{
+  postTema(theme: Theme): Observable<Theme> {
 
     // Nesse caso temos que passar a variável theme para salvar no db.
 
-   // console.log(JSON.stringify(theme))
-   // console.log(environment.token)
+    // console.log(JSON.stringify(theme))
+    // console.log(environment.token)
     return this.http.post<Theme>('http://localhost:8080/theme', theme, this.token)
 
   }
 
-  putTema(theme: Theme): Observable<Theme>{
+  putTema(theme: Theme): Observable<Theme> {
 
-    
-   // console.log(JSON.stringify(theme))
-  //  console.log(environment.token)
+
+    // console.log(JSON.stringify(theme))
+    //  console.log(environment.token)
     return this.http.put<Theme>('http://localhost:8080/theme', theme, this.token)
 
   }
 
-  deleteTema(id: number){
+  deleteTema(id: number) {
 
-    
- //   console.log(JSON.stringify(id))
- //   console.log(environment.token)
+
+    //   console.log(JSON.stringify(id))
+    //   console.log(environment.token)
 
     // Para passar um parametro na rota devemos usar o ${...} para poder por a variável na url do back
 

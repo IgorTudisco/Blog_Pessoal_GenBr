@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserLogin } from '../model/UserLogin';
 import { Observable } from 'rxjs'
@@ -15,9 +15,18 @@ export class AuthService {
   // O mesmo é passado como parâmetro.
 
   constructor(
+
     private http: HttpClient
+
   ) { }
 
+  // Colocando o Authorization e o token do usuário no header. Assim consigo fazer minha validação.
+
+  token = {
+
+    headers: new HttpHeaders().set('Authorization', environment.token)
+
+  }
 
   // Métodos principais de autenticação
 
@@ -26,27 +35,35 @@ export class AuthService {
   // Temos que indicar qual o tipo de dado que o Angular deve "ficar de olho"
   // e assim garantir que o dado passado será do tipo UserLogin.
 
-  entrar(userLogin: UserLogin): Observable<UserLogin>{
+  entrar(userLogin: UserLogin): Observable<UserLogin> {
 
     // Passando a minha rota do back end para fazer o login do usuário.
 
-    return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar',userLogin)
+    return this.http.post<UserLogin>('http://localhost:8080/user/logar', userLogin)
 
   }
 
-  cadastrar(usuario: Usuario): Observable<Usuario>{
+  cadastrar(usuario: Usuario): Observable<Usuario> {
 
-    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar',usuario)
+    return this.http.post<Usuario>('http://localhost:8080/user/cadastrar', usuario)
+
+  }
+
+  // Pegando as postagens do usuário
+
+  getByIdUsuruario(id: number): Observable<Usuario> {
+
+    return this.http.get<Usuario>(`http://localhost:8080/usuario/${id}`, this.token)
 
   }
 
   // Verificando o token na entrada 
 
-  login(){
+  login() {
 
     let ok: boolean = false
 
-    if(environment.token != ''){
+    if (environment.token != '') {
 
       ok = true
 

@@ -40,8 +40,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-		.antMatchers("/usuarios/logar").permitAll()
-		.antMatchers("/usuarios/cadastrar").permitAll() // permite tudo (userMaster)
+		.antMatchers("/user/logar").permitAll()
+		.antMatchers("/usuario/*").permitAll()
+		.antMatchers("/user/cadastrar").permitAll() // permite tudo (userMaster)
 		.anyRequest().authenticated() // tipo de autenticação
 		.and().httpBasic() // Força de proteção
 		.and().sessionManagement() // gerenciado de session
