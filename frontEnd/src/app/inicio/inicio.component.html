@@ -79,28 +79,6 @@
 
     <div class="tab-pane fade" id="nav-minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">Minhas
       postagens.
-
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
-      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
-      aspernatur porro.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
-      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
-      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
-      aspernatur porro.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
-      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
-      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
-      aspernatur porro.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
-      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dignissimos consequuntur cumque. Delectus nesciunt
-      atque minus possimus sit. Explicabo magnam placeat soluta veritatis beatae minima corporis temporibus, autem
-      aspernatur porro.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ipsam alias quia distinctio velit magni! A voluptates
-      alias dignissimos, quis, qui autem neque vel voluptatem esse velit debitis. Vitae, corrupti.
-
     </div>
 
     <div class="tab-pane fade" id="nav-postagemPorTema" role="tabpanel" aria-labelledby="nav-postagemPorTema-tab">
@@ -125,19 +103,20 @@
 
         <div class="form-group my-2">
           <label class="mb-1" for="titulo">Titulo</label>
-          <input type="text" class="form-control" id="titulo" placeholder="Digite o Titulo aqui">
+          <input [(ngModel)]='postagem.titulo' type="text" class="form-control" id="titulo"
+            placeholder="Digite o Titulo aqui">
         </div>
 
         <div class="form-group my-2">
           <label class="mb-1" for="texto">Texto</label>
-          <textarea class="form-control" name="texto" id="texto" rows="3"></textarea>
+          <textarea [(ngModel)]='postagem.text' class="form-control" name="texto" id="texto" rows="3"></textarea>
         </div>
 
         <div class="form-group my-2">
           <label class="mb-1" for="tema">Escolha um Tema ou <a data-bs-dismiss="modal" routerLink='/tema'>cadastre um
               novo:</a></label>
-          <select name="tema" id="tema" class="form-control">
-            <option value="">Temas</option>
+          <select name="tema" id="tema" class="form-control" [(ngModel)]='idTheme' (chenge)='findByIdTheme()'>
+            <option *ngFor='let theme of listaTheme' value="{{theme.id}}">{{theme.descricao}}</option>
           </select>
 
 
@@ -148,7 +127,8 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-danger my-2" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success my-2">Publicar</button>
+        <button type="button" class="btn btn-success my-2" data-bs-dismiss="modal"
+          (click)='publicar()'>Publicar</button>
       </div>
     </div>
   </div>
