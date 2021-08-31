@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
 
   nome = environment.nome
   foto = environment.foto
+  id = environment.id
 
   constructor(
 
@@ -20,13 +21,13 @@ export class MenuComponent implements OnInit {
 
     public router: Router
 
-   ) { }
+  ) { }
 
   ngOnInit() {
 
   }
 
-  sair(){
+  sair() {
 
     // Ao apertar no meu botão sair ele irá para a entrada.
 

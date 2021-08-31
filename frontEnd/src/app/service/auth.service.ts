@@ -49,6 +49,12 @@ export class AuthService {
 
   }
 
+  atualizar(usuario: Usuario): Observable<Usuario> {
+
+    return this.http.put<Usuario>('http://localhost:8080/user/cadastrar', usuario, this.token)
+
+  }
+
   // Pegando as postagens do usuário
 
   getByIdUsuruario(id: number): Observable<Usuario> {
