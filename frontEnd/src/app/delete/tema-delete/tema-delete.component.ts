@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Theme } from 'src/app/model/Theme';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -19,18 +20,19 @@ export class TemaDeleteComponent implements OnInit {
 
     private temaService: TemaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private alertas: AlertasService
 
   ) { }
 
   ngOnInit() {
 
-    if(environment.token == ''){
+    if (environment.token == '') {
 
-      // alert('Sua seção expirou, faça o login novamente.')
- 
-       this.router.navigate(['/entrar'])
- 
+      this.alertas.showAlertDanger('Sua seção expirou, faça o login novamente.')
+
+      this.router.navigate(['/entrar'])
+
     }
 
     this.idTheme = this.activatedRoute.snapshot.params['id']
@@ -39,7 +41,7 @@ export class TemaDeleteComponent implements OnInit {
 
   }
 
-  findById(id: number){
+  findById(id: number) {
 
     this.temaService.getById(id).subscribe((resp: Theme) => {
 
@@ -49,11 +51,11 @@ export class TemaDeleteComponent implements OnInit {
 
   }
 
-  deleteById(){
+  deleteById() {
 
     this.temaService.deleteTema(this.idTheme).subscribe(() => {
 
-      alert('Tema apagado com sucesso!')
+      this.alertas.showAlertSuccess('Tema apagado com sucesso!')
 
       this.router.navigate(['/tema'])
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class CadastrarComponent implements OnInit {
 
     // Injetando a dependência Router.
 
-    private router: Router
+    private router: Router,
+    private alertas: AlertasService
 
   ) { }
 
@@ -38,13 +40,13 @@ export class CadastrarComponent implements OnInit {
   // É uma boa prática.
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
 
     /* usamos o this para referênciar a variável dessa class.
        E assim usar as veriáveis de dentro dela, pois se trata de um objeto.
 
        exemplo -> this.userLogin.id
-    */    
+    */
   }
 
   confirmeSenha(event: any) {
@@ -66,8 +68,8 @@ export class CadastrarComponent implements OnInit {
     this.usuario.tipo = this.tipoUsuarioEscolha
 
     if (this.usuario.senha != this.confirmeSenhaDigitada) {
-      
-      alert("As senhas estão diferentes.")
+
+      this.alertas.showAlertDanger("As senhas estão diferentes.")
 
     } else {
 
@@ -85,7 +87,7 @@ export class CadastrarComponent implements OnInit {
 
         // Alerta de sucesso.
 
-        alert("Usuário cadastrado com sucesso.")
+        this.alertas.showAlertSuccess("Usuário cadastrado com sucesso.")
       })
 
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Theme } from '../model/Theme';
+import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -18,34 +19,35 @@ export class TemaComponent implements OnInit {
   constructor(
 
     private router: Router,
-    private temaService: TemaService
-    
+    private temaService: TemaService,
+    private alertas: AlertasService
+
   ) { }
 
   ngOnInit() {
 
     // Verificando o token
-    
-    if(environment.token == ''){
 
-      // alert('Sua seção expirou, faça o login novamente.')
- 
-       this.router.navigate(['/entrar'])
- 
-     }
+    if (environment.token == '') {
 
-     // Mostrando a minha Lista de tema.
+      this.alertas.showAlertDanger('Sua seção expirou, faça o login novamente.')
 
-     this.findAllTheme()
+      this.router.navigate(['/entrar'])
+
+    }
+
+    // Mostrando a minha Lista de tema.
+
+    this.findAllTheme()
 
   }
 
-  cadastrarTheme(){
+  cadastrarTheme() {
     this.temaService.postTema(this.theme).subscribe((resp: Theme) => {
 
       this.theme = resp
 
-      alert("Tema cadastrado com sucesso!")
+      this.alertas.showAlertSuccess("Tema cadastrado com sucesso!")
 
       // Chamando o getAllThema para o memo seja mostrado na tela.
 
@@ -53,20 +55,20 @@ export class TemaComponent implements OnInit {
 
       // Ao estanciar o tema novamente abrimos a possíbilidade para que se possa cadastrar um novo tema.
 
-     this.theme = new Theme()
+      this.theme = new Theme()
 
     })
   }
 
   // Passando a minha lista para dentro da minha lista de tema.
 
-  findAllTheme(){
+  findAllTheme() {
     this.temaService.getAllTema().subscribe((resp: Theme[]) => {
 
-      this.listaTheme = resp      
+      this.listaTheme = resp
 
     })
   }
-  
+
 
 }

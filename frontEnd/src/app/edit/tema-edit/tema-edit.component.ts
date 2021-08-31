@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Theme } from 'src/app/model/Theme';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -20,32 +21,33 @@ export class TemaEditComponent implements OnInit {
 
     // Pega o parametro ativo na minha url
 
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private alertas: AlertasService
 
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
-    if(environment.token == ''){
+    if (environment.token == '') {
 
-      // alert('Sua seção expirou, faça o login novamente.')
- 
-       this.router.navigate(['/entrar'])
- 
-     }
+      this.alertas.showAlertDanger('Sua seção expirou, faça o login novamente.')
 
-     // Pegando o parametro na url e como eu quero assim que entrar, eu tenho que passar ele no ngOnInit
+      this.router.navigate(['/entrar'])
 
-     let id = this.activatedRoute.snapshot.params['id']
+    }
 
-     // Passando o id para o método
+    // Pegando o parametro na url e como eu quero assim que entrar, eu tenho que passar ele no ngOnInit
 
-     this.findByIdTema(id)
+    let id = this.activatedRoute.snapshot.params['id']
+
+    // Passando o id para o método
+
+    this.findByIdTema(id)
 
   }
 
 
-  findByIdTema(id: number){
+  findByIdTema(id: number) {
 
     this.temaService.getById(id).subscribe((resp: Theme) => {
 
@@ -58,13 +60,13 @@ export class TemaEditComponent implements OnInit {
 
   }
 
-  atualizar(){
+  atualizar() {
 
     this.temaService.putTema(this.theme).subscribe((resp: Theme) => {
 
       this.theme = resp
 
-      alert('Tema atualizado com sucesso!')
+      this.alertas.showAlertSuccess('Tema atualizado com sucesso!')
 
       this.router.navigate(['/tema'])
 

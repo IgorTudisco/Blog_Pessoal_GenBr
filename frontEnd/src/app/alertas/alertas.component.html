@@ -1,0 +1,10 @@
+<!--Passando o tipo atravéz da interpolação-->
+
+<div class="alert alert-{{type}} alert-dismissible fade show m-0" role="alert">
+
+  <!--Imterpolando a menssagem de alerta-->
+
+  {{message}}
+
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)='onCLose()'></button>
+</div>

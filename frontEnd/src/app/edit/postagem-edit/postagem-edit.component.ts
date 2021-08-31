@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Postagem } from 'src/app/model/Postagem';
 import { Theme } from 'src/app/model/Theme';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { PostagemService } from 'src/app/service/postagem.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
@@ -23,7 +24,8 @@ export class PostagemEditComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private postagemServe: PostagemService,
-    private themeServe: TemaService
+    private themeServe: TemaService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class PostagemEditComponent implements OnInit {
 
     if (environment.token == '') {
 
-      // alert('Sua seção expirou, faça o login novamente.')
+      this.alertas.showAlertDanger('Sua seção expirou, faça o login novamente.')
 
       this.router.navigate(['/entrar'])
 
@@ -82,7 +84,7 @@ export class PostagemEditComponent implements OnInit {
 
       this.postagem = resp
 
-      alert('Postagem atualizada com sucesso!')
+      this.alertas.showAlertSuccess('Postagem atualizada com sucesso!')
 
       this.router.navigate(['/inicio'])
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -21,7 +22,8 @@ export class UserEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class UserEditComponent implements OnInit {
 
     if (environment.token == '') {
 
-      // alert('Sua seção expirou, faça o login novamente.')
+      this.alertas.showAlertDanger('Sua seção expirou, faça o login novamente.')
 
       this.router.navigate(['/inicio'])
 
@@ -62,7 +64,7 @@ export class UserEditComponent implements OnInit {
 
     if (this.usuario.senha != this.confirmeSenhaDigitada) {
 
-      alert("As senhas estão diferentes.")
+      this.alertas.showAlertSuccess("As senhas estão diferentes.")
 
     } else {
 
@@ -76,7 +78,7 @@ export class UserEditComponent implements OnInit {
 
         // Alerta de sucesso.
 
-        alert("Usuário atualizado com sucesso, faça o login novamente")
+        this.alertas.showAlertSuccess("Usuário atualizado com sucesso, faça o login novamente")
 
 
         environment.token = ''
