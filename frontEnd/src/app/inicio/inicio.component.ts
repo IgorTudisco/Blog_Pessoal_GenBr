@@ -27,6 +27,11 @@ export class InicioComponent implements OnInit {
 
   idUser = environment.id
 
+  // Para alterar a ordem das postagens.
+
+  key = 'data'
+  reverse: true // normalmente é false, mas queremos inverter a ordem.
+
   constructor(
 
     // Injetando a minha dependencia de Router.

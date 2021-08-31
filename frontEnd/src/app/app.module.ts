@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common'; // class e provide
 import { AppRoutingModule } from './app-routing.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -48,7 +49,8 @@ import { AlertasComponent } from './alertas/alertas.component';
     (Além disso temos que indicar que ele é forRoot() para a raiz do meu sistema, assim ele será usado por todo o meu sistema.
     E os meus input do alerta componentes vão funcionar direito.) */
 
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OrderModule // Para ordernar as postagens.
   ],
   providers: [{
     /*

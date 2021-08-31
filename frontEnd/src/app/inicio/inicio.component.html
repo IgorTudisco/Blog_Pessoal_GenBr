@@ -79,8 +79,15 @@
 
       <!--Card das postagens-->
 
+      <!--
+        Passando o | orderBy : key : reserve ele já entende que a
+        nossa lista será ordenada da mais recente para a mais antiga.
+        isso acontece por conta da key, que é a minha data.
+      -->
+
       <div class="card-columns py-2 d-flex">
-        <div class="card text-center" style="width: 18rem;" *ngFor='let item of listaPostagem'>
+        <div class="card text-center" style="width: 18rem;"
+          *ngFor='let item of listaPostagem | orderBy : key : reverse'>
           <div class="card-body px-2 ">
             <h5 class="card-title">{{item.titulo}}</h5>
             <small class="text-muted"> Tema: {{item.theme.descricao}}</small>
@@ -104,7 +111,8 @@
       <!--Card das minhas postagens-->
 
       <div class="card-columns py-2 d-flex">
-        <div class="card text-center" style="width: 18rem;" *ngFor='let item of user.postagem'>
+        <div class="card text-center" style="width: 18rem;"
+          *ngFor='let item of user.postagem | orderBy : key : reverse'>
           <div class="card-body px-2 ">
             <h5 class="card-title">{{item.titulo}}</h5>
             <small class="text-muted"> Tema: {{item.theme.descricao}}</small>
@@ -129,7 +137,8 @@
       <!--Card das postagens por tema-->
 
       <div class="card-columns py-2 d-flex" *ngFor='let theme of listaTheme'>
-        <div class="card text-center" style="width: 18rem;" *ngFor='let item of theme.postagem'>
+        <div class="card text-center" style="width: 18rem;"
+          *ngFor='let item of theme.postagem | orderBy : key : reverse'>
           <div class="card-body px-2 ">
             <h5 class="card-title">{{item.titulo}}</h5>
             <p class="card-text">{{item.text}}</p>
