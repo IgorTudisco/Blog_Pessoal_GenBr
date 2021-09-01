@@ -37,6 +37,7 @@ export class EntrarComponent implements OnInit {
       environment.foto = this.userLogin.foto
       environment.id = this.userLogin.id
       environment.emil = this.userLogin.email
+      environment.type = this.userLogin.tipo
 
       /*
 
