@@ -44,6 +44,12 @@ export class TemaService {
 
   }
 
+  getByDescricaoTheme(descricao: string): Observable<Theme[]> {
+
+    return this.http.get<Theme[]>(`http://localhost:8080/theme/descricao/${descricao}`, this.token)
+
+  }
+
   // Esse método recebe um objeto de Theme para salvar no db.
 
   postTema(theme: Theme): Observable<Theme> {

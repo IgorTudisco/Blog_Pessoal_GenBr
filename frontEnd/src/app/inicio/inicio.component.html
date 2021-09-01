@@ -77,6 +77,20 @@
     <div class="tab-pane fade show active" id="nav-todasAsPostagens" role="tabpanel"
       aria-labelledby="nav-todasAsPostagens-tab">
 
+      <!--Pesquisa pelo titulo da postagem-->
+
+      <div class="row d-flex justify-content-center mt-5 mb-5">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="titulo"
+              placeholder="Digite um titulo de postagem para pesquisar" [(ngModel)]='tituloPostagem'
+              (keyup)='findByTituloPostagem()'>
+          </div>
+        </div>
+      </div>
+
+      <!--/Pesquisa pelo titulo da postagem-->
+
       <!--Card das postagens-->
 
       <!--
@@ -133,6 +147,19 @@
     </div>
 
     <div class="tab-pane fade" id="nav-postagemPorTema" role="tabpanel" aria-labelledby="nav-postagemPorTema-tab">
+
+      <!--Pesquisa pelo tema da postagem-->
+
+      <div class="row d-flex justify-content-center mt-5 mb-5">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="tituloTema" placeholder="Digite um tema para pesquisar"
+              [(ngModel)]='descricaoTheme' (keyup)='findByDescricaoTheme()'>
+          </div>
+        </div>
+      </div>
+
+      <!--/Pesquisa pelo tema da postagem-->
 
       <!--Card das postagens por tema-->
 

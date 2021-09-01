@@ -1,3 +1,4 @@
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
@@ -18,10 +19,12 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagem: Postagem[]
+  tituloPostagem: string
 
   listaTheme: Theme[]
   idTheme: number
   theme: Theme = new Theme()
+  descricaoTheme: string
 
   user: Usuario = new Usuario()
 
@@ -82,6 +85,24 @@ export class InicioComponent implements OnInit {
 
   }
 
+  findByDescricaoTheme() {
+
+    if (this.descricaoTheme == "") {
+
+      this.getAllTema()
+
+    } else {
+
+      this.temaService.getByDescricaoTheme(this.descricaoTheme).subscribe((resp: Theme[]) => {
+
+        this.listaTheme = resp
+
+      })
+
+    }
+
+  }
+
   findAllPostagem() {
 
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
@@ -89,6 +110,25 @@ export class InicioComponent implements OnInit {
       this.listaPostagem = resp
 
     })
+
+  }
+
+  findByTituloPostagem() {
+
+    if (this.tituloPostagem == '') {
+
+      this.findAllPostagem()
+
+    } else {
+
+      this.postagemService.getByTituloPostagem(this.tituloPostagem).subscribe((resp: Postagem[]) => {
+
+        this.listaPostagem = resp
+
+      })
+
+    }
+
 
   }
 
